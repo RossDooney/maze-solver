@@ -47,3 +47,22 @@ class Line:
             self.p1.x, self.p1.y, self.p2.x, self.p2.y, fill=fill_color, width=2
         )
         canvas.pack(fill=BOTH, expand=1)
+
+
+class Cell:
+    def __init__(self, x1, x2, y1, y2, win):
+        self.has_left_wall = False
+        self.has_right_wall = False
+        self.has_top_wall = False
+        self.has_bottom_wall = False
+        self._win = win
+        # possible better to use a list for this? self.has_walls = [False, False, False, False]
+        # top right
+        self._x1 = x1
+        self._y1 = y1
+        # top left
+        self._x2 = x2
+        self._y2 = y2
+
+        l = Line(Point(self._x1, self._y1), Point(self._x2, self._y2))
+        self._win.draw_line(l, "black")
