@@ -22,10 +22,10 @@ class Cell:
         self._x2 = x2
         self._y2 = y2
         if self.has_top_wall == True:
-            top_wall = Line(Point(self._x1, self._y2), Point(self._x2, self._y2))
+            top_wall = Line(Point(self._x1, self._y1), Point(self._x2, self._y1))
             self._win.draw_line(top_wall, "black")
         if self.has_bottom_wall == True:
-            bottom_wall = Line(Point(self._x1, self._y1), Point(self._x2, self._y1))
+            bottom_wall = Line(Point(self._x1, self._y2), Point(self._x2, self._y2))
             self._win.draw_line(bottom_wall, "black")
         if self.has_right_wall == True:
             right_wall = Line(Point(self._x2, self._y1), Point(self._x2, self._y2))
