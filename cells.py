@@ -33,3 +33,20 @@ class Cell:
         if self.has_left_wall == True:
             left_wall = Line(Point(self._x1, self._y1), Point(self._x1, self._y2))
             self._win.draw_line(left_wall, "black")
+
+    def draw_move(self, to_cell, undo=False):
+        middle_self_x = (self._x1 + self._x2) / 2
+        middle_self_y = (self._y1 + self._y2) / 2
+        middle_to_cell_x = (to_cell._x1 + to_cell._x2) / 2
+        middle_to_cell_y = (to_cell._y1 + to_cell._y2) / 2
+
+        middle_self_to_cell = Line(
+            Point(middle_self_x, middle_self_y),
+            Point(middle_to_cell_x, middle_to_cell_y),
+        )
+        line_color = "red"
+
+        if undo:
+            line_color = "grey"
+
+        self._win.draw_line(middle_self_to_cell, line_color)
