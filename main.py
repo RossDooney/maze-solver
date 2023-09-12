@@ -1,5 +1,6 @@
 from graphics import Window, Line, Point
 from cells import Cell
+from mazes import Maze
 
 
 def main():
@@ -28,6 +29,8 @@ def main():
     c4.draw(150, 100, 200, 150)
 
     c3.draw_move(c4, True)
+
+    m = Maze(100, 100, 100, 100, 100, 100, win)
 
     win.wait_for_close()
 
