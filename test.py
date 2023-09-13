@@ -29,6 +29,19 @@ class Tests(unittest.TestCase):
             num_rows,
         )
 
+    def test_exit_enterence_exists(self):
+        num_cols = 10
+        num_rows = 10
+        m = Maze(0, 0, num_rows, num_cols, 10, 10)
+        self.assertEqual(
+            m._cells[0][0].has_left_wall,
+            False,
+        )
+        self.assertEqual(
+            m._cells[num_cols - 1][num_rows - 1].has_right_wall,
+            False,
+        )
+
 
 if __name__ == "__main__":
     unittest.main()
