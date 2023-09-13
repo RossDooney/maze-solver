@@ -15,8 +15,18 @@ class Maze:
         self._create_cells()
 
     def _create_cells(self):
-        maze_height = self._win.height
-        maze_width = self._win.width
+        x_1 = 50
+        x_2 = 100
+        y_1 = 50
+        y_2 = 100
+        for i in range(self._num_rows):
+            cell = Cell(self._win)
+            self._cells.append(cell)
+
+        for i in range(len(self._cells)):
+            self._cells[i].draw(x_1, y_1, x_2, y_2)
+            x_1 += 50
+            x_2 += 50
 
     def _draw_cell(self, i, j):
         return
