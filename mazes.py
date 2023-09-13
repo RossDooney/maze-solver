@@ -1,3 +1,4 @@
+import time
 from cells import Cell
 from graphics import Window, Line, Point
 
@@ -16,20 +17,30 @@ class Maze:
 
     def _create_cells(self):
         x_1 = 50
-        x_2 = 100
         y_1 = 50
-        y_2 = 100
-        for i in range(self._num_rows):
-            cell = Cell(self._win)
-            self._cells.append(cell)
+        for i in range(self._num_cols):
+            cells_col = []
+            for j in range(self._num_rows):
+                cells_col.append(Cell(self._win))
+            self._cells.append(cells_col)
 
-        for i in range(len(self._cells)):
-            self._cells[i].draw(x_1, y_1, x_2, y_2)
-            x_1 += 50
-            x_2 += 50
+        for j in range(self._num_cols):
+            for i in range(self._num_rows):
+                self._draw_cell(i, j)
+                # self._cells[j].draw(
+                #     x_1, y_1, x_1 + self._cell_size_x, y_1 + self._cell_size_y
+                # )
+                x_1 += self._cell_size_x
+            y_1 += self._cell_size_y
 
     def _draw_cell(self, i, j):
-        return
+        x1 = self._x1 + i * self._cell_size_x
+        y1 = self._y1 + j * self._cell_size_y
+        x2 = x1 + self._cell_size_x
+        y2 = y1 + self._cell_size_y
+        self._cells[i][j].draw(x1, y1, x2, y2)
+        self._animate()
 
     def _animate(self):
-        return
+        self._win.redraw()
+        time.sleep(0.05)
