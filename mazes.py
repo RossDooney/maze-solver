@@ -54,5 +54,25 @@ class Maze:
 
     def _break_walls_r(self, i, j):
         self._cells[i][j].visited = True
+        while True:
+            new_index_list = []
 
-        return
+            possible_directions = 0
+
+            if i > 0 and not self._cells[i - 1][j].visited:
+                new_index_list.append((i - 1, j))
+                possible_directions += 1
+            if i < self._num_cols and not self._cells[i + 1][j].visited:
+                new_index_list.append((i + 1, j))
+                possible_directions += 1
+            if j > 0 and not self._cells[i][j - 1].visited:
+                new_index_list.append((i, j - 1))
+                possible_directions += 1
+            if j < self._num_rows and not self._cells[i][j - 1].visited:
+                new_index_list.append((i, j + 1))
+
+            if possible_directions == 0:
+                self._draw_cell(i, j)
+                return
+
+            return
