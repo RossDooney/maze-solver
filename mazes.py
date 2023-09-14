@@ -1,6 +1,7 @@
 import time
 from cells import Cell
 from graphics import Window, Line, Point
+import random
 
 
 class Maze:
@@ -14,6 +15,7 @@ class Maze:
         self._win = win
         self._cells = []
         self._create_cells()
+        self._break_walls_r(0, 0)
 
     def _create_cells(self):
         for i in range(self._num_cols):
@@ -31,8 +33,8 @@ class Maze:
     def _draw_cell(self, i, j):
         if self._win is None:
             return
-        x1 = self._x1 + i * self._cell_size_x
-        y1 = self._y1 + j * self._cell_size_y
+        x1 = self._x1 + j * self._cell_size_x
+        y1 = self._y1 + i * self._cell_size_y
         x2 = x1 + self._cell_size_x
         y2 = y1 + self._cell_size_y
         self._cells[i][j].draw(x1, y1, x2, y2)
@@ -49,3 +51,8 @@ class Maze:
         self._cells[i][j].has_right_wall = False
         self._draw_cell(0, 0)
         self._draw_cell(i, j)
+
+    def _break_walls_r(self, i, j):
+        self._cells[i][j].visited = True
+
+        return
