@@ -30,7 +30,7 @@ def main():
 
     # c3.draw_move(c4, True)
 
-    m = Maze(50, 50, 12, 10, 55, 55, win)
+    m = Maze(50, 50, 14, 14, 55, 55, win)
     win.wait_for_close()
 
 

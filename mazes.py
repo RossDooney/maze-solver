@@ -18,6 +18,7 @@ class Maze:
         self._cells = []
         self._create_cells()
         self._break_walls_r(0, 0)
+        self._reset_cells_visited()
         if seed:
             random.seed(seed)
 
@@ -48,7 +49,7 @@ class Maze:
         if self._win is None:
             return
         self._win.redraw()
-        time.sleep(0.01)
+        time.sleep(0.05)
 
     def _break_exit_and_enterance(self, i, j):
         self._cells[0][0].has_left_wall = False
@@ -99,3 +100,8 @@ class Maze:
                 self._cells[i][j - 1].has_bottom_wall = False
 
             self._break_walls_r(next_index[0], next_index[1])
+
+    def _reset_cells_visited(self):
+        for i in range(self._num_cols):
+            for j in range(self._num_rows):
+                self._cells[i][j].visited = False
